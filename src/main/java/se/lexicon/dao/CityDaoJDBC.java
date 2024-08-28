@@ -148,6 +148,8 @@ public class CityDaoJDBC implements CityDao{
                         System.out.println("Generated City Id: " + city.getId());
                     }
                 }
+            } else {
+                throw new IllegalArgumentException("Creation operation failed...");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -175,6 +177,8 @@ public class CityDaoJDBC implements CityDao{
                     System.out.println("City updated successfully...");
                     int updatedCount = preparedStatement.getUpdateCount();
                     System.out.println("Update count: " + updatedCount);
+                } else {
+                    throw new IllegalArgumentException("Updation operation failed...");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -201,6 +205,8 @@ public class CityDaoJDBC implements CityDao{
                 if (rowsDeleted > 0) {
                     System.out.println("City deleted successfully!!!");
                     deletedCityId = deleteCity.getId();
+                } else {
+                    throw new IllegalArgumentException("Deletion operation failed...");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
